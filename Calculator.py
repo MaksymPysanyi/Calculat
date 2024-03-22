@@ -8,6 +8,9 @@ class Calculator:
             a, b = b, a % b
         return a
     
+    def lcm(self, a, b):
+        return a * b // self.gsd(a, b)
+    
 class TestCalculator(unittest.TestCase):
     def setUp(self):
         self.calculator = Calculator()
@@ -19,6 +22,10 @@ class TestCalculator(unittest.TestCase):
     def test_gsd(self):
         calculator = Calculator()
         self.assertEqual(calculator.gsd(12, 18), 6)
+
+    def test_lcm(self):
+        calculator = Calculator()
+        self.assertEqual(calculator.lcm(12, 18), 36)
 
 if __name__ == "__main__":
     unittest.main()
