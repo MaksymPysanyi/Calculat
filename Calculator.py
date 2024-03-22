@@ -8,6 +8,11 @@ class Calculator:
     
     def multiply(self, a, b):
         return a * b
+    
+    def divide(self, a, b):
+        if b == 0:
+            raise ValueError("Division by 0 is not possible")
+        return a / b 
 
 class TestCalculator(unittest.TestCase):
     def setUp(self):
@@ -26,7 +31,12 @@ class TestCalculator(unittest.TestCase):
     def test_multiply(self):
         a, b = 5, 3
         result = self.calculator.multiply(a,b)
+        self.assertEqual(result, 15, "Multiply of 5 and 3 sholud be 15")
 
+    def test_divide(self):
+        a, b = 5, 3
+        result = self.calculator.divide(a, b)
+        self.assertEqual(result, 1.666666667, "Divide of 5 and 2 should be 1.666666667")
 
 if __name__ == "__main__":
     unittest.main()
