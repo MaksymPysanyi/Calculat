@@ -13,6 +13,17 @@ class Calculator:
         if b == 0:
             raise ValueError("Division by 0 is not possible")
         return a / b 
+    
+    def power (self, a, b):
+        return a ** b
+    
+    def gsd(self, a, b):
+        while b:
+            a, b = b, a % b
+        return a
+    
+    def lcm(self, a, b):
+        return a * b // self.gsd(a, b)
 
 class TestCalculator(unittest.TestCase):
     def setUp(self):
@@ -37,6 +48,18 @@ class TestCalculator(unittest.TestCase):
         a, b = 5, 3
         result = self.calculator.divide(a, b)
         self.assertEqual(result, 1.666666667, "Divide of 5 and 2 should be 1.666666667")
+
+    def test_power(self):
+        calculator = Calculator()
+        self.assertEqual(calculator.power(5, 3), 125)
+
+    def test_gsd(self):
+        calculator = Calculator()
+        self.assertEqual(calculator.gsd(12, 18), 6)
+
+    def test_lcm(self):
+        calculator = Calculator()
+        self.assertEqual(calculator.lcm(12, 18), 36)
 
 if __name__ == "__main__":
     unittest.main()
