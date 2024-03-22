@@ -5,6 +5,9 @@ class Calculator:
     
     def subtract(self, a, b):
         return a - b
+    
+    def multiply(self, a, b):
+        return a * b
 
 class TestCalculator(unittest.TestCase):
     def setUp(self):
@@ -19,6 +22,10 @@ class TestCalculator(unittest.TestCase):
         a, b = 5, 3
         result=self.calculator.subtract(a,b)
         self.assertEqual(result, 2, "Subtract of 5 and 3 sholud be 2")
+
+    def test_multiply(self):
+        a, b = 5, 3
+        result = self.calculator.multiply(a,b)
 
 
 if __name__ == "__main__":
